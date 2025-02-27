@@ -1,9 +1,8 @@
 <script setup>
-import HomePage from './View/HomePage/HomePage.vue'
 </script>
 
 <template>
-  <HomePage msg="Bem-vindo!" />
+  <router-view/>
 </template>
 
 <style scoped>

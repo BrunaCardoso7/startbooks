@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../view/HomePage/HomePage.vue";
-import Book from "../view/BookRegister/BookRegister.vue"; // Certifique-se de que esse caminho está correto
+import Book from "../view/BookRegister/BookRegister.vue";
 import AuthorRegister from "../view/AuthorRegister/AuthorRegister.vue";
 
 const routes = [

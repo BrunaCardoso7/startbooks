@@ -20,5 +20,5 @@ authorsList: {
 }
 });
 
-const fieldsAuthors = ['id', 'name']
+const fieldsAuthors = ['name']
 </script>

@@ -1,19 +1,18 @@
 # StartBooks Library 📚
 
-![Logo do Projeto](public/book-icon-design-library-symbol-vector-11453831.jpg)
-
+<img src="public/book-icon-design-library-symbol-vector-11453831.jpg" alt="Versão Desktop" style="width: 30%; height: auto;">
 StartBooks Library é uma plataforma para gerenciar livros e autores de forma eficiente, permitindo o cadastro, edição e listagem de livros e seus respectivos autores.
 
 ## 🌍 Acesse o Projeto Online
 🔗 [StartBooks Library](https://startbookslibrary.vercel.app/)
 
+
 ## 📸 Imagens do Projeto
-### Versão Desktop
-![Versão Desktop](public/desktopv.png)
 
-### Versão Mobile
-![Versão Mobile](public/mobilev.jpeg)
-
+<div style="display: flex; gap: 16px;">
+  <img src="public/desktopv.png" alt="Versão Desktop" style="width: 60%; height: auto;">
+  <img src="public/mobilev.jpeg" alt="Versão Mobile" style="width: 18%; height: auto;">
+</div>
 ## 🚀 Tecnologias Utilizadas
 - Vue.js
 - Vite

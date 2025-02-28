@@ -15,7 +15,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <h2>Top 5 Autores com mais de 5 Livros</h2>
+        <h2>Top 5 Autores com mais livros</h2>
 
         <table class="table table-bordered table-striped">
             <thead>

@@ -14,6 +14,7 @@ StartBooks Library é uma plataforma para gerenciar livros e autores de forma ef
   <img src="public/mobilev.jpeg" alt="Versão Mobile" style="width: 18%; height: auto;">
 </div>
 ## 🚀 Tecnologias Utilizadas
+
 - Vue.js
 - Vite
 - Pinia

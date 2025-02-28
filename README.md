@@ -1,5 +1,51 @@
-# Vue 3 + Vite
+# StartBooks Library 📚
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Logo do Projeto](public/book-icon-design-library-symbol-vector-11453831.jpg)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+StartBooks Library é uma plataforma para gerenciar livros e autores de forma eficiente, permitindo o cadastro, edição e listagem de livros e seus respectivos autores.
+
+## 🌍 Acesse o Projeto Online
+🔗 [StartBooks Library](https://startbookslibrary.vercel.app/)
+
+## 📸 Imagens do Projeto
+### Versão Desktop
+![Versão Desktop](public/desktopv.png)
+
+### Versão Mobile
+![Versão Mobile](public/mobilev.jpeg)
+
+## 🚀 Tecnologias Utilizadas
+- Vue.js
+- Vite
+- Pinia
+- Bootstrap
+- Websocket
+  
+
+## 📦 Como Rodar o Projeto
+
+### 1️⃣ Clonar o Repositório
+```bash
+git clone https://github.com/BrunaCardoso7/startbooks-library.git
+```
+
+### 2️⃣ Acessar a Pasta do Projeto
+```bash
+cd startbooks-library
+```
+
+### 3️⃣ Instalar as Dependências
+```bash
+npm install
+# ou
+yarn install
+```
+
+### 4️⃣ Rodar o Projeto
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+O projeto estará disponível em `http://localhost:5173/` por padrão.

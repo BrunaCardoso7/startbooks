@@ -13,7 +13,14 @@
 
     <AuthorsTable v-if="showAuthors" :authorsList="authorList" />
     <BooksTable v-if="!showAuthors" :booksList="booksList" @edit="openModal" />
-    <!-- <EditBookModal v-if="modalShow" :editBook="editBook" @update="updateBook" /> -->
+
+    <!-- ModalUpdateBook importado e utilizado -->
+    <ModalUpdateBook
+      :editBook="editBook"
+      :modalShow="modalShow"
+      @update="updateBook"
+      @update:modalShow="modalShow = $event" 
+    />
   </div>
 </template>
 
@@ -23,7 +30,7 @@ import { useGetBooksStore } from '../../stores/useGetBooksStore'
 import { useGetAuthorsStore } from '../../stores/useGetAuthorsStore'
 import AuthorsTable from '../../components/AuthorsTable/AuthorsTable.vue'
 import BooksTable from '../../components/BooksTable/BooksTable.vue'
-// import ModalU from '../components/EditBookModal.vue'
+import ModalUpdateBook from '../../components/ModalUpdateBook/ModalUpdateBook.vue'
 
 const getBooks = useGetBooksStore()
 const booksList = ref([])
@@ -46,12 +53,20 @@ onMounted(async () => {
 const toggleView = () => showAuthors.value = !showAuthors.value
 
 const openModal = (book) => {
-  editBook.value = { ...book }
-  modalShow.value = true
+  console.log('Abrindo modal...', book)  // Verifique se este log aparece
+  editBook.value = { ...book }  // Copiar os dados do livro para a variável editBook
+  modalShow.value = true  // Isso deve disparar a exibição do modal
+  console.log('modalShow antes:', modalShow.value)  // Verifique se o modalShow é alterado
 }
 
-const updateBook = () => {
-  console.log('Livro atualizado:', editBook.value)
-  modalShow.value = false
+const updateBook = (updatedBook) => {
+  console.log('Livro atualizado:', updatedBook)  // Verifique se o livro está sendo atualizado corretamente
+  // Atualize o livro com os novos dados
+  const index = booksList.value.findIndex(b => b.id === updatedBook.id)
+  if (index !== -1) {
+    booksList.value[index] = updatedBook
+  }
+  modalShow.value = false  // Fechar o modal após a atualização
+  console.log('modalShow após atualização:', modalShow.value)  // Verifique o estado do modal
 }
 </script>

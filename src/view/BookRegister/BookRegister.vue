@@ -1,31 +1,46 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue';
+import { useGetAuthorsStore } from '../../stores/useGetAuthorsStore';
+import { useCreateBookStore } from '../../stores/usePostBookStore';
 
-// Definindo o formulário como reativo
 const form = reactive({
   title: "",
   published_date: "",
-  author: ""
-})
+  author: "" 
+});
 
-// Lista de autores com valores específicos
-const authors = [
-  { value: "bruna", text: "Bruna" },
-  { value: "bruna2", text: "Bruna2" }
-]
+const authorsStore = useGetAuthorsStore();  
+const createBookStore = useCreateBookStore(); 
 
-// Função para lidar com o envio do formulário
-const onSubmit = (event) => { 
+onMounted(() => {
+  authorsStore.getAuthors();
+});
+
+const onSubmit = async (event) => { 
   event.preventDefault();
-  console.log(JSON.stringify(form)) // Acessando 'form' diretamente, sem 'this'
-}
+
+  const bookData = {
+    title: form.title,
+    published_date: form.published_date,
+    author: form.author, 
+  };
+
+  try {
+    await createBookStore.createBook(bookData);
+
+    form.title = '';
+    form.published_date = '';
+    form.author = '';
+  } catch (error) {
+    console.error('Erro ao criar o livro:', error);
+  }
+};
 </script>
 
 <template>
   <div class="container mt-5">
     <h1 class="text-primary">Registre seu livro!</h1>
     
-    <!-- Formulário de registro -->
     <b-form @submit="onSubmit">
       
       <b-form-group
@@ -54,8 +69,8 @@ const onSubmit = (event) => {
       <b-form-group id="input-group-3" label="Autor:" label-for="input-3">
         <b-form-select
           id="input-3"
-          v-model="form.author"
-          :options="authors"
+          v-model="form.author"  
+          :options="authorsStore.authors.map(author => ({ value: author.id, text: author.name }))"
           required
           value-field="value"   
           text-field="text"

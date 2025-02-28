@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useGetAuthorsStore = defineStore('getAuthors',() => {
+export const useGetAuthorsStore = defineStore('getAuthors', () => {
     const authors = ref([]);
     const loading = ref(true);
     
@@ -9,8 +9,8 @@ export const useGetAuthorsStore = defineStore('getAuthors',() => {
         loading.value = true;
         try {
             const response = await fetch('https://startbook-api.onrender.com/api/v1/author/');
-            const data = await response.json();  // Await aqui para garantir que o JSON seja resolvido
-            authors.value = data;
+            const data = await response.json();
+            authors.value = data; 
         } catch (error) {
             console.error("Erro ao listar autores: ", error);
         } finally {
@@ -18,6 +18,5 @@ export const useGetAuthorsStore = defineStore('getAuthors',() => {
         }
     };
 
-    return { authors, loading, getAuthors };  // Retorne os dados aqui, fora da função assíncrona
-    }
-);
+    return { authors, loading, getAuthors };
+});

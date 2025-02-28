@@ -1,22 +1,29 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive } from 'vue';
+import { useCreateAuthorStore } from '../../stores/usePostAuthorsStore';
 
-// Definindo o formulário como reativo
 const form = reactive({
-    name: "",
-})
+    name: "",  // Nome do autor
+});
 
-// Lista de autores com valores específicos
-const authors = [
-    { value: "bruna", text: "Bruna" },
-    { value: "bruna2", text: "Bruna2" }
-]
+const createAuthorStore = useCreateAuthorStore(); 
 
-// Função para lidar com o envio do formulário
-const onSubmit = (event) => { 
+const onSubmit = async (event) => { 
     event.preventDefault();
-    console.log(JSON.stringify(form)) // Acessando 'form' diretamente, sem 'this'
-}
+
+    // Enviar o nome do autor no formato correto
+    const authorData = {
+        name: form.name,  // Certifique-se de que o backend espera "name" e não "title"
+    };
+
+    try {
+        // Chama o store para criar o autor
+        await createAuthorStore.createAuthor(authorData);
+        form.name = '';  // Limpa o campo após o sucesso
+    } catch (error) {
+        console.error('Erro ao criar o autor:', error);
+    }
+};
 </script>
 
 <template>
@@ -25,23 +32,17 @@ const onSubmit = (event) => {
         
         <!-- Formulário de registro -->
         <b-form @submit="onSubmit">
-        
-        <b-form-group
-            id="input-group-1"
-            label="Nome do Autor:"
-            label-for="input-1"
-        >
-            <b-form-input
-            id="input-1"
-            v-model="form.name"
-            type="text"
-            placeholder="Nome do autor ..."
-            required
-            ></b-form-input>
-        </b-form-group>
+            <b-form-group id="input-group-1" label="Nome do Autor:" label-for="input-1">
+                <b-form-input
+                    id="input-1"
+                    v-model="form.name"
+                    type="text"
+                    placeholder="Nome do autor ..."
+                    required
+                ></b-form-input>
+            </b-form-group>
 
-
-        <b-button type="submit" variant="primary">Salvar</b-button>
+            <b-button type="submit" variant="primary">Salvar</b-button>
         </b-form>
     </div>
 </template>
